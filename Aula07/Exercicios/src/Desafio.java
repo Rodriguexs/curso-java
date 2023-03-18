@@ -22,22 +22,34 @@ public class Desafio {
             }
             System.out.println();
         }
-        for (int i = 0; i < qtdLinhas * qtdColunas - 1; i++) {
-            int menorValor = i;
-            for (int j = i + 1; j < qtdLinhas * qtdColunas; j++) {
-                int linha1 = menorValor / qtdColunas;
-                int coluna1 = menorValor % qtdColunas;
-                int linha2 = j / qtdColunas;
-                int coluna2 = j % qtdColunas;
-                if (matriz[linha2][coluna2] < matriz[linha1][coluna1]) {
-                    menorValor = j;
+
+        for(int i = 0; i < qtdLinhas; i++){
+            for (int j = 0; j < qtdColunas; j++){
+                for (int k = j + 1; k < qtdColunas - 1; k++){
+                    if (matriz[i][j] > matriz[i][k]){
+                        int aux = matriz[i][j];
+                        matriz[i][j] = matriz[i][k];
+                        matriz[i][k] = aux;
+                    }
                 }
             }
-            int temp = matriz[menorValor / qtdColunas][menorValor % qtdColunas];
-            matriz[menorValor / qtdColunas][menorValor % qtdColunas] = matriz[i / qtdColunas][i % qtdColunas];
-            matriz[i / qtdColunas][i % qtdColunas] = temp;
         }
-
+//        for (int i = 0; i < qtdLinhas * qtdColunas - 1; i++) {
+//            int menorValor = i;
+//            for (int j = i + 1; j < qtdLinhas * qtdColunas; j++) {
+//                int linha1 = menorValor / qtdColunas;
+//                int coluna1 = menorValor % qtdColunas;
+//                int linha2 = j / qtdColunas;
+//                int coluna2 = j % qtdColunas;
+//                if (matriz[linha2][coluna2] < matriz[linha1][coluna1]) {
+//                    menorValor = j;
+//                }
+//            }
+//            int temp = matriz[menorValor / qtdColunas][menorValor % qtdColunas];
+//            matriz[menorValor / qtdColunas][menorValor % qtdColunas] = matriz[i / qtdColunas][i % qtdColunas];
+//            matriz[i / qtdColunas][i % qtdColunas] = temp;
+//        }
+//
         System.out.println("Matriz ordenada em ordem cresecnte: ");
         for (int linha = 0; linha < qtdLinhas; linha++){
             for (int coluna = 0; coluna < qtdColunas; coluna++){
